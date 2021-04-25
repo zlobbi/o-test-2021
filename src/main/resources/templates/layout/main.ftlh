@@ -8,6 +8,8 @@
     <title>O-Tasks</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bootstrap.css">
+    <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="../../css/bootstrap-reboot.min.css">
     <link rel="stylesheet" href="../../css/semantic.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.min.css">
     <#list styles as styleSource>
@@ -15,6 +17,8 @@
     </#list>
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/script.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/popper.min.js"></script>
     <script src="../../js/semantic.min.js"></script>
     <script src="../../js/moment.min.js"></script>
     <script src="../../js/fullcalendar.min.js"></script>

@@ -9,9 +9,9 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>kg.km</groupId>
-    <artifactId>o-test-2021</artifactId>
+    <artifactId>o-test</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <name>o-test-2021</name>
+    <name>o-test</name>
     <description>Demo project for Spring Boot</description>
     <properties>
         <java.version>11</java.version>
@@ -32,6 +32,12 @@
         <dependency>
             <groupId>org.flywaydb</groupId>
             <artifactId>flyway-core</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.jetbrains</groupId>
+            <artifactId>annotations</artifactId>
+            <version>20.1.0</version>
         </dependency>
 
         <dependency>

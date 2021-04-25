@@ -89,12 +89,8 @@
                                                           rows="2"></textarea>
                                             </div>
                                             <div class="btn-group d-flex">
-                                                <button id="new-task-form-reject-btn mr-2" type="submit"
-                                                        class="btn btn-block btn-info">reject
-                                                </button>
-                                                <button id="new-task-form-reject-btn" type="button"
-                                                        class="btn btn-block btn-danger">reject
-                                                </button>
+                                                <button id="new-task-form-submit-btn" type="submit" class="btn btn-info">submit</button>
+                                                <button id="new-task-form-reject-btn"type="button" class="btn btn-danger">reject</button>
                                             </div>
                                         </form>
                                     </div>

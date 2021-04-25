@@ -1,0 +1,7 @@
+CREATE TABLE IF NOT EXISTS task
+(
+    id       BIGSERIAL PRIMARY KEY,
+    start    TIMESTAMP WITHOUT TIME ZONE,
+    end_time TIMESTAMP WITHOUT TIME ZONE,
+    title    VARCHAR(255)
+);

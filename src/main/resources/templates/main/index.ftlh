@@ -5,7 +5,7 @@
 
 <@main.render {} >
     <div class="row">
-        <div class="col-md-8">
+        <div class="col-md-8 col-sm-12">
             <div class="col-md-12">
                 <div class="panel border border-dark">
                     <div class="panel-header"></div>
@@ -15,15 +15,15 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12">
             <div class="panel border border-dark">
                 <div class="panel-header"></div>
                 <div class="panel-title text-center mt-4">
                     <h2>День</h2>
                 </div>
                 <div class="panel-body">
-                    <div class="day-title text-center mb-3">
-                        <h3 id="day-title-text" class="text-warning">Выберите день!</h3>
+                    <div class="day-title text-center mb-2">
+                        <h3 id="day-title-text" class="text-white py-1 bg-day">Выберите день!</h3>
                     </div>
                     <div id="non-selected-hidden-block" class="hidden">
                         <div class="day-tasks-list mb-3">
@@ -43,56 +43,16 @@
                             </div>
                         </div>
                         <div id="new-task-add">
-                            <div id="new-task" class="panel hidden">
-                                <div class="panel-body">
-                                    <form action="/" method="post" id="new-task-form" class="">
-                                        <div class="form-group d-flex justify-content-between">
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="meeting" name="type"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label" for="meeting">Meeting</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="task" name="type"
-                                                       class="custom-control-input">
-                                                <label class="custom-control-label" for="task">Task</label>
-                                            </div>
-                                            <div class="custom-control custom-radio custom-control-inline">
-                                                <input type="radio" id="dinner"
-                                                       name="type" class="custom-control-input">
-                                                <label class="custom-control-label" for="dinner">Dinner</label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="task-title">Title</label>
-                                            <input type="text" class="form-control" id="new-task-title"
-                                                   placeholder="title">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="new-task-description">Description</label>
-                                            <textarea class="form-control" id="new-task-description"
-                                                      rows="2"></textarea>
-                                        </div>
-                                        <div class="">
-                                            <@vertForm.inputDateTime "domain.start"/>
-                                        </div>
-                                        <div class="btn-group d-flex">
-                                            <button id="new-task-form-submit-btn" type="submit"
-                                                    class="btn btn-info">submit
-                                            </button>
-                                            <button id="new-task-form-reject-btn" type="button"
-                                                    class="btn btn-danger">reject
-                                            </button>
-                                        </div>
-                                        <div class="form-group">
-                                            <#--                                                <@spring.formRadioButtons "domain.type" types "&nbsp;" 'class="styled" required'/>-->
-<#--                                            <@form.inputColor "domain.end"/>-->
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                            <div id="new-task-btn" class="">
-                                <button type="button" class="btn btn-block btn-info">+</button>
+                            <div id="new-task" class="mt-4">
+                                <form action="/" method="post" id="new-task-form">
+                                    <@vertForm.radioButtonAsButton "domain.type" types true/>
+                                    <@vertForm.inputText "domain.title" "text" true />
+                                    <@vertForm.textAreaSimple "domain.description"/>
+                                    <div class="btn-group d-flex">
+                                        <@vertForm.inputSubmit "action.add" "btn btn-info"/>
+                                        <@vertForm.inputCancel "action.cancel" "btn btn-danger"/>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
@@ -100,5 +60,4 @@
             </div>
         </div>
     </div>
-<#--    </div>-->
 </@main.render>

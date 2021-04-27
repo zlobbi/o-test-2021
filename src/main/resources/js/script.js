@@ -35,19 +35,21 @@ $(document).ready(function () {
     const newTaskAddBtn = document.querySelector('#new-task-btn'),
         newTask = document.querySelector('#new-task'),
         newTaskForm = document.querySelector('#new-task-form'),
-        newTaskFormSubmitBtn = document.querySelector('#new-task-form-submit-btn'),
-        newTaskFormRejectBtn = document.querySelector('#new-task-form-reject-btn');
+        taskTypes = document.querySelectorAll('.type-btn');
 
-    newTaskFormRejectBtn.addEventListener('click', () => {
-        newTaskForm.reset();
-        newTaskAddBtn.classList.remove('hidden');
-        newTask.classList.add('hidden');
-    });
+    taskTypes.forEach(b => b.addEventListener('click', () => {
+        if (b.classList.contains('active')) {
+            b.classList.remove('active');
+        } else {
+            taskTypes.forEach(b => b.classList.remove('active'));
+            b.classList.add('active');
+        }
+    }));
 
-    newTaskAddBtn.addEventListener('click', () => {
-        newTaskAddBtn.classList.add('hidden');
-        newTask.classList.remove('hidden');
-    });
+    // newTaskAddBtn ? newTaskAddBtn.addEventListener('click', () => {
+    //     newTaskAddBtn.classList.add('hidden');
+    //     newTask.classList.remove('hidden');
+    // }) : "";
 
     const eventSource = fetch("/api/task/events")
         .then((response) => response.json())
@@ -68,7 +70,6 @@ $(document).ready(function () {
             dayTitle = diff == 1 ? start.format('ddd DD-MM-YYYY') :
                 start.format('ddd DD-MM-YYYY') + ' / ' + end.format('ddd DD-MM-YYYY');
         $('#non-selected-hidden-block').removeClass('hidden');
-        $('#day-title-text').removeClass('text-warning').addClass('text_title');
         mTitle.innerHTML = dayTitle;
     }
 
@@ -77,9 +78,4 @@ $(document).ready(function () {
         second = new Date(second);
         return Math.abs(Math.round((second - first) / (1000 * 60 * 60 * 24)));
     }
-
-    $('.ui.sidebar').sidebar({
-        context: $('.pushable.segment'),
-        transition: 'overlay'
-    }).sidebar('attach events', 'a#hamburger-link');
 });

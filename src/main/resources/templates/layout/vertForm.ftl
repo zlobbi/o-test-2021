@@ -366,56 +366,6 @@
     </script>
 </#macro>
 
-<#macro fileInputBind path required=false fileMask="">
-    <@spring.bind path/>
-    <div class="form-group">
-        <@label path required/>
-        <#assign replacedPath = path?replace(".", "-") />
-        <#assign fileInputId = "${replacedPath}" />
-        <div class="col-md-12">
-            <input id="${fileInputId}" name="${spring.status.expression}" type="file" class="file-styled"
-                   accept="${fileMask}">
-            <@spring.showErrors "<br>" "text-danger" />
-        </div>
-    </div>
-    <script>
-        $('#${fileInputId}').bind('change', function () {
-            if ($(this).val().indexOf("..") > 0) {
-                swal({
-                    title: "<@spring.message "error.title"/>",
-                    text: "<@spring.message "error.file-not-contain-double-dot"/>",
-                    type: "error"
-                });
-                $(this).val('');
-            } else {
-                var fileSize;
-                var sizeOfFiles = 0;
-                var inputFiles = $("form :input[type=file]");
-                for (var item: inputFiles) {
-                    if (item.files && item.files[0]) {
-                        fileSize = item.files[0].size;
-                        sizeOfFiles = sizeOfFiles + fileSize;
-                    }
-                }
-                if (sizeOfFiles > maxFileSizeInBytes) {
-                    swal({
-                        title: "<@spring.message "error.title"/>",
-                        text: "<@spring.message "error.file-more-than-required"/>",
-                        type: "error"
-                    });
-                    $('#${fileInputId}').val('');
-                }
-            }
-        });
-
-        $('.file-styled').uniform({
-            fileButtonClass: 'action btn bg-blue',
-            fileDefaultHtml: "<@spring.message 'input.noFile'/>",
-            fileButtonHtml: "<@spring.message 'input.chooseFile'/>"
-        });
-    </script>
-</#macro>
-
 <#macro select2 path url selected attributes="" required=false allowClear=true placeholder="">
     <@spring.bind path/>
     <#assign replacedPath = path?replace(".", "-") />
@@ -864,12 +814,27 @@
     </div>
 </#macro>
 
-<#macro radioButtonLabled path values>
+<#macro radioButtonLabled path values required=false>
     <@spring.bind path />
     <@spring.showErrors "<br>" "text-danger" />
-    <@label path />
+    <@label path required/>
     <div class="form-group">
-        <@spring.formRadioButtons path values "&nbsp;" 'class="styled"' />
+        <@spring.formRadioButtons path values "&nbsp;" 'class="styled"'/>
+    </div>
+</#macro>
+
+<#macro radioButtonAsButton path options required=false>
+    <@spring.bind path/>
+    <@spring.showErrors "<br>" "text-danger" />
+    <div class="form-group">
+        <div class="btn-group d-flex mb-2">
+            <#list options?keys as value>
+                <#assign id="${spring.status.expression?replace('[','')?replace(']','')}${value_index}">
+                <input type="radio" class="btn-check" autocomplete="off" hidden id="${id}"
+                       name="${spring.status.expression}" value="${value}"/>
+                <label class="btn btn-info type-btn" for="${id}">${options[value]}</label>
+            </#list>
+        </div>
     </div>
 </#macro>
 

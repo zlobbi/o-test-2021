@@ -2,14 +2,13 @@
 .fc-view.fc-month-view.fc-basic-view {
     border: 1px solid darkslategrey;
     border-collapse: collapse;
-    /*font-size: 0.9em;*/
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
 }
 
-/*Table-th*/
 .bg-info,
 .btn-info,
 .panel-info,
+.bg-day,
 .fc-widget-header {
     background-color: #009879;
     color: #ffffff;
@@ -20,10 +19,9 @@
     background-color: #008066;
 }
 
-.fc-widget-header th,
+.fc-widget-header td,
 .fc-widget-header th {
     padding: 5px 7px;
-    border: 1px solid black;
 }
 
 .fc-day {
@@ -32,12 +30,10 @@
 
 .fc-day.fc-widget-content {
     background-color: #F0FFF0;
-    border-bottom: 1px solid black;
 }
 
 .fc-day.fc-widget-content::selection {
     background-color: #b3ffb3;
-    border-bottom: 1px solid black;
 }
 
 .fc-day.fc-widget-content.fc-tue.fc-today {

@@ -23,6 +23,7 @@
     </#list>
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/script.js"></script>
+    <script src="../../js/semantic-customization.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="../../js/jquery.mask.min.js"></script>
     <script src="../../js/semantic.min.js"></script>
@@ -60,7 +61,7 @@
             <a class="item" href="#"><i class="mail"></i>Link Item</a>
             <div class="right menu">
                 <div class="item">
-                    <a class="ui basic teal button" href="#"><i class="sign in"></i>Log in</a>
+                    <a class="ui basic teal button" href="#"><i class="sign in"></i>Войти</a>
                 </div>
             </div>
         </div>
@@ -96,7 +97,7 @@
         <@head />
     </head>
     <body class="d-flex flex-column">
-    <#--    <@userbar/>-->
+        <@userbar/>
     <#--    <@navbar/>-->
     <@pageHeader breadcrumb/>
     <@content>

@@ -1,0 +1,55 @@
+/*Dates-table*/
+.fc-view.fc-month-view.fc-basic-view {
+    border: 1px solid darkslategrey;
+    border-collapse: collapse;
+    /*font-size: 0.9em;*/
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+
+/*Table-th*/
+.bg-info,
+.btn-info,
+.panel-info,
+.fc-widget-header {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+}
+
+.btn-info:hover {
+    background-color: #008066;
+}
+
+.fc-widget-header th,
+.fc-widget-header th {
+    padding: 5px 7px;
+    border: 1px solid black;
+}
+
+.fc-day {
+    border: 1px solid black;
+}
+
+.fc-day.fc-widget-content {
+    background-color: #F0FFF0;
+    border-bottom: 1px solid black;
+}
+
+.fc-day.fc-widget-content::selection {
+    background-color: #b3ffb3;
+    border-bottom: 1px solid black;
+}
+
+.fc-day.fc-widget-content.fc-tue.fc-today {
+    background-color: #b8daff;
+}
+
+.fc-button {
+    border: 1px solid darkslategrey;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+}
+.fc-button,
+.fc-icon.fc-icon-left-single-arrow,
+.fc-icon.fc-icon-right-single-arrow {
+    color: #009879;
+}

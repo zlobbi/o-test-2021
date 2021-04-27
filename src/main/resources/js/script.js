@@ -32,11 +32,7 @@ $(document).ready(function () {
         }
     });
 
-    const calendar = document.querySelector('#calendar'),
-        brand = document.querySelector('.header'),
-        searchInput = document.querySelector('#search-div input'),
-        searchResult = document.querySelector('#search-result'),
-        newTaskAddBtn = document.querySelector('#new-task-btn'),
+    const newTaskAddBtn = document.querySelector('#new-task-btn'),
         newTask = document.querySelector('#new-task'),
         newTaskForm = document.querySelector('#new-task-form'),
         newTaskFormSubmitBtn = document.querySelector('#new-task-form-submit-btn'),
@@ -53,25 +49,13 @@ $(document).ready(function () {
         newTask.classList.remove('hidden');
     });
 
-    searchInput.addEventListener('focus', () => {
-        calendar.classList.remove('show');
-        calendar.classList.add('hidden');
-        searchResult.style.display = 'flex';
-    });
-
-    brand.addEventListener('click', () => {
-        calendar.classList.remove('hidden');
-        calendar.classList.add('show');
-        searchResult.style.display = 'none';
-    });
-
     const eventSource = fetch("/api/task/events")
         .then((response) => response.json())
         .then((events) => {
             return events;
         });
 
-    const fetchAndRenderEvents = async () => {
+    async function fetchAndRenderEvents() {
         const events = await eventSource;
         $('#calendar').fullCalendar('addEventSource', events);
     };
@@ -83,7 +67,6 @@ $(document).ready(function () {
             diff = diffBetweenStringDates(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
             dayTitle = diff == 1 ? start.format('ddd DD-MM-YYYY') :
                 start.format('ddd DD-MM-YYYY') + ' / ' + end.format('ddd DD-MM-YYYY');
-
         $('#non-selected-hidden-block').removeClass('hidden');
         $('#day-title-text').removeClass('text-warning').addClass('text_title');
         mTitle.innerHTML = dayTitle;
@@ -94,4 +77,9 @@ $(document).ready(function () {
         second = new Date(second);
         return Math.abs(Math.round((second - first) / (1000 * 60 * 60 * 24)));
     }
+
+    $('.ui.sidebar').sidebar({
+        context: $('.pushable.segment'),
+        transition: 'overlay'
+    }).sidebar('attach events', 'a#hamburger-link');
 });

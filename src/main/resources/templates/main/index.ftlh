@@ -1,6 +1,5 @@
 <#import "/spring.ftl" as spring/>
 <#import "../layout/main.ftlh" as main/>
-<#import "../layout/form.ftlh" as form/>
 <#import "../layout/vertForm.ftl" as vertForm/>
 
 <@main.render {} >
@@ -27,20 +26,22 @@
                             <div class="list-group">
                                 <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
                                     This is a
-                                    <span class="badge badge-info badge-pill">14</span>
+                                    <span class="badge badge-info badge-pill"></span>
                                 </a>
                             </div>
                         </div>
                         <div id="new-task-add">
                             <div id="new-task" class="mt-4">
                                 <form action="/" method="post" id="new-task-form">
-                                    <@vertForm.radioButtonAsButton "domain.type" types true/>
+                                    <@vertForm.radioButtonAsButton "domain.type" eventTypes true/>
                                     <@vertForm.inputText "domain.title" "text" true />
                                     <@vertForm.textAreaSimple "domain.description"/>
                                     <div class="btn-group d-flex">
                                         <@vertForm.inputSubmit "action.add" "btn btn-info"/>
                                         <@vertForm.inputCancel "action.cancel" "btn btn-danger"/>
                                     </div>
+                                    <@vertForm.inputDateTime "domain.start"/>
+                                    <@vertForm.inputText "domain.end"/>
                                 </form>
                             </div>
                         </div>

@@ -50,7 +50,9 @@ body, html {
         opacity: 1;
     }
 }
-
+.btn-group label {
+   max-width: 50%;
+}
 .hidden {
     display: none;
 }

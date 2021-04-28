@@ -50,14 +50,18 @@
     <div class="navbar"></div>
 </#macro>
 
-<#macro pageHeader arr>
+<#macro pageHeader>
     <div class="ui fixed inverted menu">
         <div class="ui container">
             <a href="#" class="header item">
-                <img class="logo" src="https://media-exp1.licdn.com/dms/image/C510BAQHK3RC_mgjfFA/company-logo_200_200/0/1519909986609?e=1627516800&v=beta&t=GZCr9aNf9wKz6w_l2oDqJvouT5n-bUTZW1L8zgMyCUs">
+                <img class="logo"
+                     src="https://media-exp1.licdn.com/dms/image/C510BAQHK3RC_mgjfFA/company-logo_200_200/0/1519909986609?e=1627516800&v=beta&t=GZCr9aNf9wKz6w_l2oDqJvouT5n-bUTZW1L8zgMyCUs">
             </a>
-            <a href="#" class="item"><i class="home"></i>Home</a>
-            <a href="#" class="item"><i class="mail"></i> Contact</a>
+            <#if navigationBar?? && navigationBar?has_content>
+                <#list navigationBar.getNavbarItems() as navs>
+                    <a href="${navs.href!''}" class="item">${navs.title!''}</a>
+                </#list>
+            </#if>
             <div class="right menu">
                 <div class="item">
                     <a class="ui basic teal button" href="#"><i class="sign in"></i>Войти</a>
@@ -96,9 +100,9 @@
         <@head />
     </head>
     <body class="d-flex flex-column">
-        <@userbar/>
-        <@navbar/>
-    <@pageHeader breadcrumb/>
+    <@userbar/>
+    <@navbar/>
+    <@pageHeader />
     <@content>
         <#nested/>
     </@content>

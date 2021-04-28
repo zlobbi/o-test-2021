@@ -46,12 +46,7 @@ $(document).ready(function () {
         }
     }));
 
-    // newTaskAddBtn ? newTaskAddBtn.addEventListener('click', () => {
-    //     newTaskAddBtn.classList.add('hidden');
-    //     newTask.classList.remove('hidden');
-    // }) : "";
-
-    const eventSource = fetch("/api/task/events")
+    const eventSource = fetch("/api/event/all")
         .then((response) => response.json())
         .then((events) => {
             return events;
@@ -65,6 +60,10 @@ $(document).ready(function () {
     fetchAndRenderEvents();
 
     function fastView(start, end) {
+        var e = $('end');
+        e.val(start.format('YYYY-MM-DD HH:MM:ss'));
+
+        $('anytime-month-numeric-domain-start').val(start);
         var mTitle = document.querySelector('#day-title-text'),
             diff = diffBetweenStringDates(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
             dayTitle = diff == 1 ? start.format('ddd DD-MM-YYYY') :

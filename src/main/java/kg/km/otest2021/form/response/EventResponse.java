@@ -3,11 +3,9 @@
  * kadyrbek.mavlyanov@gmail.com
  * 2021.
  */
-
 package kg.km.otest2021.form.response;
 
-import kg.km.otest2021.entity.Task;
-import kg.km.otest2021.util.TimeHelper;
+import kg.km.otest2021.entity.event.Event;
 
 import java.time.LocalDateTime;
 
@@ -17,28 +15,25 @@ public class EventResponse {
 
     private String title;
 
-    private String start;
+    private LocalDateTime start;
 
-    private String end;
+    private LocalDateTime end;
+
+    private String type;
 
     private String color;
 
     public EventResponse() {
     }
 
-    public EventResponse from(Task task) {
+    public EventResponse from(Event task) {
         this.id = task.getId();
         this.title = task.getTitle();
-        this.end = task.getEnd().toString();
-        this.start = task.getStart().toString();
-        this.color = "#f5c6cb";
-//        this.start = task.getStart().getHour() + task.getEnd().getMinute() == 0 ?
-//                task.getStart().format(TimeHelper.DATE_REVERSE_FORMATTER) : getDateString(task.getStart());
+        this.end = task.getEnd();
+        this.start = task.getStart();
+        this.color = task.getEventType().getColor();
+        this.type = task.getEventType().getTitle();
         return this;
-    }
-
-    private String getDateString(LocalDateTime dateTime) {
-        return dateTime.format(TimeHelper.DATE_TIME_PIN_FORMATTER).replace(" ", "T");
     }
 
     public Long getId() {
@@ -59,21 +54,28 @@ public class EventResponse {
         return this;
     }
 
-    public String getStart() {
+    public LocalDateTime getStart() {
         return start;
     }
 
-    public EventResponse setStart(String start) {
+    public void setStart(LocalDateTime start) {
         this.start = start;
-        return this;
     }
 
-    public String getEnd() {
+    public LocalDateTime getEnd() {
         return end;
     }
 
-    public EventResponse setEnd(String end) {
+    public void setEnd(LocalDateTime end) {
         this.end = end;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public EventResponse setType(String type) {
+        this.type = type;
         return this;
     }
 

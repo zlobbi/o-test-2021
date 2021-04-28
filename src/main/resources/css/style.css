@@ -1,19 +1,29 @@
 body, html {
-    height: 100%!important;
+    height: 100% !important;
     background-color: #edf2f7;
 }
+
+#tasks-list {
+    height: 180px;
+    overflow: scroll;
+}
+
 .ui.menu .item img.logo {
     margin-right: 1.5em;
 }
+
 .btn.btn-info.label-active {
     outline: #0e8c8c;
 }
+
 .main.container {
     margin-top: 7em;
 }
+
 .wireframe {
     margin-top: 2em;
 }
+
 .ui.footer.segment {
     margin: 5em 0em 0em;
     padding: 5em 0em;

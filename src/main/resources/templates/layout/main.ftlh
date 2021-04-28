@@ -58,7 +58,6 @@
             </a>
             <a href="#" class="item"><i class="home"></i>Home</a>
             <a href="#" class="item"><i class="mail"></i> Contact</a>
-            <a class="item" href="#"><i class="mail"></i>Link Item</a>
             <div class="right menu">
                 <div class="item">
                     <a class="ui basic teal button" href="#"><i class="sign in"></i>Войти</a>
@@ -98,7 +97,7 @@
     </head>
     <body class="d-flex flex-column">
         <@userbar/>
-    <#--    <@navbar/>-->
+        <@navbar/>
     <@pageHeader breadcrumb/>
     <@content>
         <#nested/>

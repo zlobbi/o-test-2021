@@ -6,13 +6,13 @@ CREATE TABLE IF NOT EXISTS event_type
     );
 
 INSERT INTO event_type (title, color)
-VALUES ('task.meeting', '#b8daff');
+VALUES ('task.primary', '#b8daff');
 INSERT INTO event_type (title, color)
-VALUES ('task.dinner', '#c3e6cb');
+VALUES ('task.success', '#c3e6cb');
 INSERT INTO event_type (title, color)
-VALUES ('task.primary', '#f5c6cb');
+VALUES ('task.danger', '#f5c6cb');
 INSERT INTO event_type (title, color)
-VALUES ('task.secondary', '#ffeeba');
+VALUES ('task.warning', '#ffeeba');
 
 ALTER TABLE task
     RENAME TO event;

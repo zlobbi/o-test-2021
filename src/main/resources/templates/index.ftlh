@@ -1,6 +1,6 @@
 <#import "/spring.ftl" as spring/>
-<#import "../layout/main.ftlh" as main/>
-<#import "../layout/vertForm.ftl" as vertForm/>
+<#import "layout/main.ftlh" as main/>
+<#import "layout/vertForm.ftl" as vertForm/>
 
 <@main.render {} >
     <div class="row">

@@ -6,7 +6,12 @@
 package kg.km.otest2021.form.event;
 
 import kg.km.otest2021.entity.event.Event;
+import lombok.Data;
+import lombok.ToString;
 
+import java.time.LocalDateTime;
+
+@Data
 public class EventResponse {
 
     private Long id;
@@ -19,7 +24,13 @@ public class EventResponse {
 
     private String type;
 
+    private String description;
+
     private String color;
+
+    private String bgColor;
+
+    private boolean expired;
 
     public EventResponse() {
     }
@@ -30,59 +41,10 @@ public class EventResponse {
         this.end = task.getEnd().toString();
         this.start = task.getStart().toString();
         this.color = task.getEventType().getColor();
+        this.description = task.getDescription();
         this.type = task.getEventType().getTitle();
-        return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public EventResponse setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public EventResponse setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public String getStart() {
-        return start;
-    }
-
-    public void setStart(String start) {
-        this.start = start;
-    }
-
-    public String getEnd() {
-        return end;
-    }
-
-    public void setEnd(String end) {
-        this.end = end;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public EventResponse setType(String type) {
-        this.type = type;
-        return this;
-    }
-
-    public String getColor() {
-        return color;
-    }
-
-    public EventResponse setColor(String color) {
-        this.color = color;
+        this.bgColor = this.type.substring(this.type.indexOf(".") + 1);
+        this.expired = LocalDateTime.now().isAfter(task.getEnd());
         return this;
     }
 }

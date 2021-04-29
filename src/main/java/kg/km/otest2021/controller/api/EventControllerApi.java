@@ -6,9 +6,9 @@
 package kg.km.otest2021.controller.api;
 
 import kg.km.otest2021.service.EventService;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/event")
@@ -20,8 +20,13 @@ public class EventControllerApi {
         this.service = service;
     }
 
-   @GetMapping("/all")
+    @GetMapping("/all")
     public String getEvents() {
         return service.getEventsJsonString();
-   }
+    }
+
+    @PostMapping("/selected-day")
+    public String  getSelectedDayEvents(@RequestBody Map<String, String> map) {
+        return service.getSelectedDayEvents(map);
+    }
 }

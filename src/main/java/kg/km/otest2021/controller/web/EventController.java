@@ -29,16 +29,22 @@ public class EventController {
 
     @GetMapping
     public ModelAndView home() {
-        return new ModelAndView("main/index")
+        return new ModelAndView("/index")
                 .addObject("domain", new EventForm());
     }
 
     @PostMapping
-    public ModelAndView postTask(@Valid @ModelAttribute("domain") EventForm form, BindingResult result) {
-        if (result.hasErrors()) {
-        }
+    public ModelAndView postTask(
+            @Valid @ModelAttribute("domain") EventForm form,
+            BindingResult result
+    ) {
+        if (result.hasErrors())
+            return new ModelAndView("index")
+                    .addObject("domain", form);
+
         eventService.create(form);
-        return new ModelAndView("main/index")
-                .addObject("domain", form);
+        return new ModelAndView("index")
+                .addObject("domain", new EventForm());
     }
+
 }

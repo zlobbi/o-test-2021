@@ -10,6 +10,7 @@ $(document).ready(function () {
 
         select: (start, end) => {
             fastView(start, end);
+            getSelectedDayEvents(start, end);
         },
 
         defaultDate: new Date(),
@@ -74,4 +75,59 @@ $(document).ready(function () {
         second = new Date(second);
         return Math.abs(Math.round((second - first) / (1000 * 60 * 60 * 24)));
     }
+
+    function getDateTimeFormat(dateObject) {
+        return dateObject.format('YYYY-MM-DD HH:mm:ss');
+    }
+
+    async function getSelectedDayEvents(start, end) {
+        const data = {
+            "start": getDateTimeFormat(start),
+            "end": getDateTimeFormat(end)
+        };
+        await postData('api/event/selected-day', JSON.stringify(data))
+            .then(data => {
+                const listBlock = document.querySelector('#tasks-list .list-group');
+                listBlock.innerHTML = '';
+                JSON.parse(JSON.stringify(data)).forEach(e => {
+                    renderInTaskList(e, listBlock);
+                });
+            });
+    }
+
+    const postData = async (url, data) => {
+        const res = await fetch(url, {
+            method: "POST",
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: data
+        });
+        return await res.json();
+    };
+
+    function renderInTaskList(event, listBlock) {
+        console.log(event);
+        const item = document.createElement('a'),
+            badge = document.createElement('span');
+        item.classList.add('list-group-item', 'list-group-item-action', `list-group-item-${event.bgColor}`);
+        item.cssText = {
+            'background-color': event.color
+        };
+        item.innerText = event.title;
+        badge.classList.add('badge', 'badge-pill', `badge-${event.bgColor}`);
+        item.append(badge);
+        listBlock.append(item);
+    }
 });
+
+class Event {
+    constructor(id, title, descr, start, end, type) {
+        this.id = id;
+        this.title = title;
+        this.descr = descr;
+        this.start = start;
+        this.end = end;
+        this.type = type;
+    }
+}

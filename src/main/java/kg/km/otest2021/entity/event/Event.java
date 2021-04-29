@@ -25,7 +25,7 @@ public class Event extends BaseEntity {
     @Column(name = "end_time")
     private LocalDateTime end;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne
     @JoinColumn(name = "event_type")
     private EventType eventType;
 

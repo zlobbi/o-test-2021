@@ -9,9 +9,12 @@ import kg.km.otest2021.entity.base.BaseEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import java.io.Serializable;
 
 @Entity
-public class EventType extends BaseEntity {
+public class EventType extends BaseEntity implements Serializable {
+
+    private static final long serialVersionUID = 7201631561674055724L;
 
     @Column(name = "title")
     private String title;

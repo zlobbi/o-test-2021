@@ -10,6 +10,11 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.query.QueryByExampleExecutor;
 import org.springframework.stereotype.Repository;
 
+import java.time.LocalDateTime;
+import java.util.List;
+
 @Repository
 public interface EventRepository extends JpaRepository<Event, Long>, QueryByExampleExecutor<Event> {
+
+    List<Event> findAllByStartBetweenOrderByEndDesc(LocalDateTime start, LocalDateTime end);
 }

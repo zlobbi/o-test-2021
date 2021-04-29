@@ -32,10 +32,7 @@ $(document).ready(function () {
         }
     });
 
-    const newTaskAddBtn = document.querySelector('#new-task-btn'),
-        newTask = document.querySelector('#new-task'),
-        newTaskForm = document.querySelector('#new-task-form'),
-        taskTypes = document.querySelectorAll('.type-btn');
+    const taskTypes = document.querySelectorAll('.type-btn');
 
     taskTypes.forEach(b => b.addEventListener('click', () => {
         if (b.classList.contains('active')) {
@@ -60,14 +57,14 @@ $(document).ready(function () {
     fetchAndRenderEvents();
 
     function fastView(start, end) {
-        var e = $('end');
-        e.val(start.format('YYYY-MM-DD HH:MM:ss'));
-
-        $('anytime-month-numeric-domain-start').val(start);
         var mTitle = document.querySelector('#day-title-text'),
+            endInput = document.querySelector('#end'),
+            startInput = document.querySelector('#start'),
             diff = diffBetweenStringDates(start.format('YYYY-MM-DD'), end.format('YYYY-MM-DD')),
-            dayTitle = diff == 1 ? start.format('ddd DD-MM-YYYY') :
+            dayTitle = diff === 1 ? start.format('ddd DD-MM-YYYY') :
                 start.format('ddd DD-MM-YYYY') + ' / ' + end.format('ddd DD-MM-YYYY');
+        startInput.value = start.format('YYYY-MM-DD HH:mm:ss');
+        endInput.value = end.format('YYYY-MM-DD HH:mm:ss');
         $('#non-selected-hidden-block').removeClass('hidden');
         mTitle.innerHTML = dayTitle;
     }

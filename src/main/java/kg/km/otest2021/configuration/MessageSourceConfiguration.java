@@ -32,7 +32,7 @@ public class MessageSourceConfiguration {
     public LocaleResolver localeResolver() {
         CookieLocaleResolver resolver = new CookieLocaleResolver();
         resolver.setCookieName("lang");
-        resolver.setDefaultLocale(new Locale("en"));
+        resolver.setDefaultLocale(new Locale("ru"));
         return resolver;
     }
 

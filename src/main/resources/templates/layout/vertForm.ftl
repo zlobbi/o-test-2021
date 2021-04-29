@@ -768,6 +768,10 @@
     <button type="button" onclick="window.location.reload()" class="btn btn-${class}"><@spring.message text /></button>
 </#macro>
 
+<#macro inputResetForm text="action.cancel" class="default">
+    <button type="button" onclick="document.querySelector('form').reset()" class="btn btn-${class}"><@spring.message text /></button>
+</#macro>
+
 <#macro inputCancel text="action.cancel" class="default">
     <button type="button" onclick="history.back()" class="btn btn-${class}"><@spring.message text /></button>
 </#macro>
@@ -831,7 +835,7 @@
                 <#assign id="${spring.status.expression?replace('[','')?replace(']','')}${value_index}">
                 <input type="radio" class="btn-check" autocomplete="off" hidden id="${id}"
                        name="${spring.status.expression}" value="${value}"/>
-                <label class="btn btn-${value} type-btn" for="${id}">${options[value]}</label>
+                <label class="btn type-btn" style="background-color: ${value};" for="${id}"><@spring.message '${options[value]}'/></label>
             </#list>
         </div>
     </div>

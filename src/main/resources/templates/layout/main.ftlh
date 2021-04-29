@@ -11,9 +11,9 @@
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
     <link rel="stylesheet" href="../../css/icons/icomoon/styles.css">
     <link rel="stylesheet" href="../../css/icons/fontawesome/styles.min.css">
+
     <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../../css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../../css/semantic.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.custom-styles.css">
     <link rel="stylesheet" href="../../css/anytime.min.css">
@@ -23,10 +23,8 @@
     </#list>
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/script.js"></script>
-    <script src="../../js/semantic-customization.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="../../js/jquery.mask.min.js"></script>
-    <script src="../../js/semantic.min.js"></script>
     <script src="../../js/moment.min.js"></script>
     <script src="../../js/fullcalendar.min.js"></script>
     <script src="../../js/anytime.min.js"></script>
@@ -46,29 +44,33 @@
 </#macro>
 
 <#macro navbar>
-<#--    TODO navbar-->
-    <div class="navbar"></div>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img class="align-top" src="https://o.kg/local/templates/main/img/content/top-logo-min.png" alt="brand">
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav">
+                    <#if navigationBar?? && navigationBar?has_content>
+                        <#list navigationBar.getNavbarItems() as navs>
+                            <li class="nav-item">
+                                <a class="nav-link active"
+                                   href="${navs.href!''}"><@spring.message '${navs.title!""}'/></a>
+                                <span class="sr-only">(current)</span>
+                            </li>
+                        </#list>
+                    </#if>
+                </ul>
+            </div>
+        </div>
+    </nav>
 </#macro>
 
 <#macro pageHeader>
-    <div class="ui fixed inverted menu">
-        <div class="ui container">
-            <a href="#" class="header item">
-                <img class="logo"
-                     src="https://media-exp1.licdn.com/dms/image/C510BAQHK3RC_mgjfFA/company-logo_200_200/0/1519909986609?e=1627516800&v=beta&t=GZCr9aNf9wKz6w_l2oDqJvouT5n-bUTZW1L8zgMyCUs">
-            </a>
-            <#if navigationBar?? && navigationBar?has_content>
-                <#list navigationBar.getNavbarItems() as navs>
-                    <a href="${navs.href!''}" class="item">${navs.title!''}</a>
-                </#list>
-            </#if>
-            <div class="right menu">
-                <div class="item">
-                    <a class="ui basic teal button" href="#"><i class="sign in"></i>Войти</a>
-                </div>
-            </div>
-        </div>
-    </div>
 </#macro>
 
 <#macro content>
@@ -82,15 +84,18 @@
 </#macro>
 
 <#macro footer>
-    <div class="ui inverted footer segment p-3 mt-auto">
-        <div class="container text-right">
-            <div class="ui horizontal inverted small divided link list">
-                <a class="item" href="#">Kadyrbek Mavlyanov</a>
-                <a class="item" href="#">kadyrbek.mavlyanov@gmail.com</a>
-                <a class="item" href="#">2021 year.</a>
+    <footer class="footer-bs mt-auto">
+        <div class="container">
+            <div class="col-md-3 footer-brand animated fadeInLeft">
+            </div>
+            <div class="col-md-4 footer-nav animated fadeInUp">
+            </div>
+            <div class="col-md-2 footer-social animated fadeInDown">
+            </div>
+            <div class="col-md-3 footer-ns animated fadeInRight">
             </div>
         </div>
-    </div>
+    </footer>
 </#macro>
 
 <#macro render breadcrumb={} scripts=[]>

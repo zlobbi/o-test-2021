@@ -47,8 +47,8 @@ public class WebControllerAdvice {
     public Map<String, String> eventTypes(
     ) {
         Map<String, String> types = new HashMap<>();
-        eventTypeService.getAll()
-                .forEach(e -> types.put(e.getColor(), e.getTitle()));
+        eventTypeService.getAll().forEach(e ->
+                types.put(e.getColor(), e.getTitle()));
         return types;
     }
 
@@ -56,6 +56,4 @@ public class WebControllerAdvice {
     public String error(@RequestParam(value = "error", required = false) String error) {
         return error;
     }
-
-
 }

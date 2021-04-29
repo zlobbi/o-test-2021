@@ -37,6 +37,7 @@ public class EventController {
     public ModelAndView postTask(@Valid @ModelAttribute("domain") EventForm form, BindingResult result) {
         if (result.hasErrors()) {
         }
+        eventService.create(form);
         return new ModelAndView("main/index")
                 .addObject("domain", form);
     }

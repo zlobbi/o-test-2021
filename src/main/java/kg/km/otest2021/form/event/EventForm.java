@@ -7,14 +7,12 @@ package kg.km.otest2021.form.event;
 
 import kg.km.otest2021.entity.event.Event;
 import kg.km.otest2021.util.TimeHelper;
-import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
-@Data
 public class EventForm {
 
     private Long id;
@@ -25,14 +23,14 @@ public class EventForm {
     private String description;
 
     @NotNull
-    @DateTimeFormat(pattern = TimeHelper.DATE_TIME_FORMAT)
+    @DateTimeFormat(pattern = TimeHelper.DATE_TIME_REVERSE_FORMAT)
     private LocalDateTime start;
 
     @NotNull
-    @DateTimeFormat(pattern = TimeHelper.DATE_TIME_FORMAT)
+    @DateTimeFormat(pattern = TimeHelper.DATE_TIME_REVERSE_FORMAT)
     private LocalDateTime end;
 
-    private String type;
+    private String type = "#f5c6cb";
 
     public EventForm() {
     }
@@ -79,6 +77,15 @@ public class EventForm {
 
     public EventForm setId(Long id) {
         this.id = id;
+        return this;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public EventForm setType(String type) {
+        this.type = type;
         return this;
     }
 

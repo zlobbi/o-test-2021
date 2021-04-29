@@ -24,13 +24,6 @@ public class NavbarItem implements Serializable {
 
     private int order;
 
-    public static NavbarItem of(String title, String href, int order) {
-        return new NavbarItem()
-                .setTitle(title)
-                .setHref(href)
-                .setOrder(order);
-    }
-
     private NavbarItem() {
     }
 
@@ -77,5 +70,12 @@ public class NavbarItem implements Serializable {
     public NavbarItem setOrder(int order) {
         this.order = order;
         return this;
+    }
+
+    public static NavbarItem of(String title, String href, int order) {
+        return new NavbarItem()
+                .setTitle(title)
+                .setHref(href)
+                .setOrder(order);
     }
 }

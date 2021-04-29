@@ -8,8 +8,9 @@ package kg.km.otest2021.service;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.km.otest2021.entity.event.Event;
+import kg.km.otest2021.entity.event.EventType;
 import kg.km.otest2021.form.event.EventForm;
-import kg.km.otest2021.form.response.EventResponse;
+import kg.km.otest2021.form.event.EventResponse;
 import kg.km.otest2021.repository.EventRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -21,14 +22,21 @@ import java.util.stream.Collectors;
 public class EventService {
 
     private final EventRepository eventRepository;
+    private final EventTypeService eventTypeService;
 
     @Autowired
-    public EventService(EventRepository eventRepository) {
+    public EventService(
+            EventRepository eventRepository,
+            EventTypeService eventTypeService
+    ) {
         this.eventRepository = eventRepository;
+        this.eventTypeService = eventTypeService;
     }
 
     public Event create(EventForm form) {
         Event event = form.toEvent();
+        EventType type = eventTypeService.getByColor(form.getType());
+        event.setEventType(type);
         return eventRepository.save(event);
     }
 

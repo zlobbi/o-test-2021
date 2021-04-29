@@ -3,11 +3,9 @@
  * kadyrbek.mavlyanov@gmail.com
  * 2021.
  */
-package kg.km.otest2021.form.response;
+package kg.km.otest2021.form.event;
 
 import kg.km.otest2021.entity.event.Event;
-
-import java.time.LocalDateTime;
 
 public class EventResponse {
 
@@ -15,9 +13,9 @@ public class EventResponse {
 
     private String title;
 
-    private LocalDateTime start;
+    private String start;
 
-    private LocalDateTime end;
+    private String end;
 
     private String type;
 
@@ -29,8 +27,8 @@ public class EventResponse {
     public EventResponse from(Event task) {
         this.id = task.getId();
         this.title = task.getTitle();
-        this.end = task.getEnd();
-        this.start = task.getStart();
+        this.end = task.getEnd().toString();
+        this.start = task.getStart().toString();
         this.color = task.getEventType().getColor();
         this.type = task.getEventType().getTitle();
         return this;
@@ -54,19 +52,19 @@ public class EventResponse {
         return this;
     }
 
-    public LocalDateTime getStart() {
+    public String getStart() {
         return start;
     }
 
-    public void setStart(LocalDateTime start) {
+    public void setStart(String start) {
         this.start = start;
     }
 
-    public LocalDateTime getEnd() {
+    public String getEnd() {
         return end;
     }
 
-    public void setEnd(LocalDateTime end) {
+    public void setEnd(String end) {
         this.end = end;
     }
 

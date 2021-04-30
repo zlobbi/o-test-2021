@@ -24,18 +24,11 @@
                     <div id="non-selected-hidden-block" class="hidden">
                         <div id="tasks-list" class="day-tasks-list mb-3">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-danger">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-warning">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
+<#--                                example of task in event-list-->
+<#--                                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">-->
+<#--                                    This is a-->
+<#--                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>-->
+<#--                                </a>-->
                             </div>
                         </div>
                         <div id="new-task-add">

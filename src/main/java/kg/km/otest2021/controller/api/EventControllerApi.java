@@ -26,7 +26,7 @@ public class EventControllerApi {
     }
 
     @PostMapping("/selected-day")
-    public String  getSelectedDayEvents(@RequestBody Map<String, String> map) {
+    public String getSelectedDayEvents(@RequestBody Map<String, String> map) {
         return service.getSelectedDayEvents(map);
     }
 }

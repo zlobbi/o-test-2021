@@ -9,6 +9,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import kg.km.otest2021.entity.event.Event;
 import kg.km.otest2021.entity.event.EventType;
+import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.form.event.EventForm;
 import kg.km.otest2021.form.event.EventResponse;
 import kg.km.otest2021.repository.EventRepository;
@@ -17,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.Comparator;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -37,21 +37,22 @@ public class EventService {
         this.eventTypeService = eventTypeService;
     }
 
-    public Event create(EventForm form) {
+    public Event create(EventForm form, User user) {
         Event event = form.toEvent();
+        event.setUser(user);
         EventType type = eventTypeService.getByColor(form.getType());
         event.setEventType(type);
         return eventRepository.save(event);
     }
 
-    public String getEventsJsonString() {
-        return getJsonString(eventRepository.findAll());
+    public String getEventsJsonString(User user) {
+        return getJsonString(eventRepository.findAllByUser(user));
     }
 
-    public String getSelectedDayEvents(Map<String, String> map) {
+    public String getSelectedDayEvents(Map<String, String> map, User user) {
         LocalDateTime start = LocalDateTime.parse(map.get("start"), TimeHelper.DATE_TIME_REVERSE_FORMATTER);
         LocalDateTime end = LocalDateTime.parse(map.get("end"), TimeHelper.DATE_TIME_REVERSE_FORMATTER);
-        return getJsonString(eventRepository.findAllByStartBetweenOrderByEndDesc(start, end));
+        return getJsonString(eventRepository.findAllByStartBetweenAndUserOrderByEndDesc(start, end, user));
     }
 
     private String getJsonString(List<Event> events) {

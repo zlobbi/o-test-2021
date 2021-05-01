@@ -5,14 +5,14 @@
 <@main.render {} >
     <div class="row">
         <div class="col-md-8 col-sm-12">
-            <div class="panel border border-dark">
+            <div class="panel border border-dark p-4">
                 <div class="panel-body">
                     <div id="calendar"></div>
                 </div>
             </div>
         </div>
         <div class="col-md-4 col-sm-12">
-            <div class="panel border border-dark">
+            <div class="panel border border-dark p-4">
                 <div class="panel-header"></div>
                 <div class="panel-title text-center mt-4">
                     <h2><@spring.message "day"/></h2>
@@ -24,18 +24,6 @@
                     <div id="non-selected-hidden-block" class="hidden">
                         <div id="tasks-list" class="day-tasks-list mb-3">
                             <div class="list-group">
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-primary">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-danger">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
-                                <a href="#" class="list-group-item list-group-item-action list-group-item-warning">
-                                    This is a
-                                    <span class="badge badge-info badge-pill"><i class="fas fa-hourglass-start"></i></span>
-                                </a>
                             </div>
                         </div>
                         <div id="new-task-add">

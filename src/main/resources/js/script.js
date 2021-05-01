@@ -41,6 +41,7 @@ $(document).ready(function () {
         } else {
             taskTypes.forEach(b => b.classList.remove('active'));
             b.classList.add('active');
+            b.style.background = 'red';
         }
     }));
 
@@ -107,7 +108,6 @@ $(document).ready(function () {
     };
 
     function renderInTaskList(event, listBlock) {
-        console.log(event);
         const item = document.createElement('a'),
             badge = document.createElement('span');
         item.classList.add('list-group-item', 'list-group-item-action', `list-group-item-${event.bgColor}`);

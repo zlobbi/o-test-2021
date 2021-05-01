@@ -9,10 +9,12 @@ package kg.km.otest2021.advice;
 
 import kg.km.otest2021.component.navbar.Navbar;
 import kg.km.otest2021.component.navbar.NavbarBuilder;
+import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.service.EventTypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -50,6 +52,11 @@ public class WebControllerAdvice {
         eventTypeService.getAll().forEach(e ->
                 types.put(e.getColor(), e.getTitle()));
         return types;
+    }
+
+    @ModelAttribute("user")
+    public User user(@AuthenticationPrincipal User user) {
+        return user;
     }
 
     @ModelAttribute("error")

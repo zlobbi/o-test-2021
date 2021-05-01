@@ -7,13 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>O-Tasks</title>
     <link rel="stylesheet" href="../../css/style.css">
-    <link rel="stylesheet" href="../../css/bootstrap.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/icons/icomoon/styles.css">
-    <link rel="stylesheet" href="../../css/icons/fontawesome/styles.min.css">
-
     <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
     <link rel="stylesheet" href="../../css/bootstrap-reboot.min.css">
+    <link rel="stylesheet" href="../../css/icons/icomoon/styles.css">
+    <link rel="stylesheet" href="../../css/icons/fontawesome/styles.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.custom-styles.css">
     <link rel="stylesheet" href="../../css/anytime.min.css">
@@ -24,14 +22,11 @@
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/script.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
+    <script src="../../js/bootstrap.bundle.min.js"></script>
     <script src="../../js/jquery.mask.min.js"></script>
     <script src="../../js/moment.min.js"></script>
     <script src="../../js/fullcalendar.min.js"></script>
     <script src="../../js/anytime.min.js"></script>
-    <script src="../../js/datepicker.js"></script>
-    <script src="../../js/datepaginator.min.js"></script>
-    <script src="../../js/spectrum.js"></script>
-    <script src="../../js/jquery.spectrum-ru.js"></script>
     <#list scripts as scriptSource>
         <script src="${scriptSource}"></script>
     </#list>
@@ -39,14 +34,13 @@
 </#macro>
 
 <#macro userbar>
-<#--    TODO userbar-->
     <div class="userbar"></div>
 </#macro>
 
 <#macro navbar>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
         <div class="container">
-            <a class="navbar-brand" href="#">
+            <a class="navbar-brand" href="/">
                 <img class="align-top" src="https://o.kg/local/templates/main/img/content/top-logo-min.png" alt="brand">
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -66,6 +60,41 @@
                     </#if>
                 </ul>
             </div>
+            <ul class="nav navbar-nav navbar-right">
+                <#if user??>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> 
+                            <strong>${user.username}</strong>
+                            <span class="glyphicon glyphicon-chevron-down"></span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="navbar-login">
+                                    <div class="row">
+                                        <div class="col-lg-4">
+                                            <p class="text-center">
+                                                <span class="glyphicon glyphicon-user icon-size"></span>
+                                            </p>
+                                        </div>
+                                        <div class="col-lg-8">
+                                            <p class="text-left"><strong>${user.username}</strong></p>
+                                            <p class="text-left">
+                                                <a href="/change-password"
+                                                   class="btn btn-info btn-block"><@spring.message "user.change-password"/></a>
+                                                <a href="/logout"
+                                                   class="btn btn-danger btn-block btn-sm"><@spring.message "user.logout" /></a>
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                <#else >
+                    <a href="/login" class="btn btn-info"><@spring.message "user.login"/></a>
+                </#if>
+            </ul>
         </div>
     </nav>
 </#macro>

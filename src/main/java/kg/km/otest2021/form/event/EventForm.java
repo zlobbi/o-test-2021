@@ -7,12 +7,16 @@ package kg.km.otest2021.form.event;
 
 import kg.km.otest2021.entity.event.Event;
 import kg.km.otest2021.util.TimeHelper;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
+@Data
+@NoArgsConstructor
 public class EventForm {
 
     private Long id;
@@ -31,63 +35,6 @@ public class EventForm {
     private LocalDateTime end;
 
     private String type = "#f5c6cb";
-
-    public EventForm() {
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public EventForm setTitle(String title) {
-        this.title = title;
-        return this;
-    }
-
-    public LocalDateTime getStart() {
-        return start;
-    }
-
-    public EventForm setStart(LocalDateTime start) {
-        this.start = start;
-        return this;
-    }
-
-    public LocalDateTime getEnd() {
-        return end;
-    }
-
-    public EventForm setEnd(LocalDateTime end) {
-        this.end = end;
-        return this;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public EventForm setDescription(String description) {
-        this.description = description;
-        return this;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public EventForm setId(Long id) {
-        this.id = id;
-        return this;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public EventForm setType(String type) {
-        this.type = type;
-        return this;
-    }
 
     public Event toEvent() {
         return new Event()

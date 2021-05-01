@@ -5,9 +5,11 @@
  */
 package kg.km.otest2021.controller.web;
 
+import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.form.event.EventForm;
 import kg.km.otest2021.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -35,6 +37,7 @@ public class EventController {
 
     @PostMapping
     public ModelAndView postTask(
+            @AuthenticationPrincipal User user,
             @Valid @ModelAttribute("domain") EventForm form,
             BindingResult result
     ) {
@@ -42,7 +45,7 @@ public class EventController {
             return new ModelAndView("index")
                     .addObject("domain", form);
 
-        eventService.create(form);
+        eventService.create(form, user);
         return new ModelAndView("index")
                 .addObject("domain", new EventForm());
     }

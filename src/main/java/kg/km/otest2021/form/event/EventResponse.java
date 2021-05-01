@@ -7,11 +7,12 @@ package kg.km.otest2021.form.event;
 
 import kg.km.otest2021.entity.event.Event;
 import lombok.Data;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 
 @Data
+@NoArgsConstructor
 public class EventResponse {
 
     private Long id;
@@ -31,9 +32,6 @@ public class EventResponse {
     private String bgColor;
 
     private boolean expired;
-
-    public EventResponse() {
-    }
 
     public EventResponse from(Event task) {
         this.id = task.getId();

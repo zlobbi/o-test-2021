@@ -13,9 +13,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "\"user\"")
 public class User extends BaseEntity implements UserDetails {
 
     @Column(nullable = false, unique = true)
@@ -25,11 +27,11 @@ public class User extends BaseEntity implements UserDetails {
     private String password;
 
     @NotNull
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "m2m_user_role",
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
-    private Set<Role> roles;
+    private Set<Role> roles = new HashSet<>();
 
     @Column
     private boolean expired;

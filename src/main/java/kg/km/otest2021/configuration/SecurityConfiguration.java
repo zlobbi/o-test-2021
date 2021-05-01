@@ -37,17 +37,18 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.formLogin()
                 .loginPage("/login")
-                .failureUrl("/login?error=true");
+                .failureUrl("/login?error=true")
+                .successForwardUrl("/");
 
         http.logout()
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/")
                 .invalidateHttpSession(true);
 
-//        http.authorizeRequests()
-//                .antMatchers("/login", "/api/getGSINInstitutes", "/assets/**").permitAll()
-//                .antMatchers("/**")
-//                .authenticated();
+        http.authorizeRequests()
+                .antMatchers("/login", "/css/**").permitAll()
+                .antMatchers("/**")
+                .authenticated();
         http
                 .csrf()
                 .disable();

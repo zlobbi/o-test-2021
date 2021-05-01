@@ -7,7 +7,10 @@ package kg.km.otest2021.entity.event;
 
 import kg.km.otest2021.entity.base.BaseEntity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 import java.time.LocalDateTime;
 
 @Entity

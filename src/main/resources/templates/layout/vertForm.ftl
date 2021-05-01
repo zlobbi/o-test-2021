@@ -835,7 +835,7 @@
                 <#assign id="${spring.status.expression?replace('[','')?replace(']','')}${value_index}">
                 <input type="radio" class="btn-check" autocomplete="off" hidden id="${id}"
                        name="${spring.status.expression}" value="${value}"/>
-                <label class="btn type-btn" style="background-color: ${value};" for="${id}"><@spring.message '${options[value]}'/></label>
+                <label class="btn" style="background-color: ${value};" for="${id}"><@spring.message '${options[value]}'/></label>
             </#list>
         </div>
     </div>

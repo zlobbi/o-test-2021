@@ -60,8 +60,8 @@
                     </#if>
                 </ul>
             </div>
-            <#if user??>
-                <ul class="nav navbar-nav navbar-right">
+            <ul class="nav navbar-nav navbar-right">
+                <#if user??>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                             <span class="glyphicon glyphicon-user"></span> 
@@ -80,10 +80,10 @@
                                         <div class="col-lg-8">
                                             <p class="text-left"><strong>${user.username}</strong></p>
                                             <p class="text-left">
-                                                <a href="/logout"
-                                                   class="btn btn-info btn-block btn-sm"><@spring.message "user.logout" /></a>
                                                 <a href="/change-password"
-                                                   class="btn btn-danger btn-block"><@spring.message "user.change-password"/></a>
+                                                   class="btn btn-info btn-block"><@spring.message "user.change-password"/></a>
+                                                <a href="/logout"
+                                                   class="btn btn-danger btn-block btn-sm"><@spring.message "user.logout" /></a>
                                             </p>
                                         </div>
                                     </div>
@@ -91,8 +91,10 @@
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </#if>
+                <#else >
+                    <a href="/login" class="btn btn-info"><@spring.message "user.login"/></a>
+                </#if>
+            </ul>
         </div>
     </nav>
 </#macro>

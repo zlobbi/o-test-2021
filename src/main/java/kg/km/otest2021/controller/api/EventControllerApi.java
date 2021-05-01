@@ -5,7 +5,9 @@
  */
 package kg.km.otest2021.controller.api;
 
+import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.service.EventService;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -21,12 +23,17 @@ public class EventControllerApi {
     }
 
     @GetMapping("/all")
-    public String getEvents() {
-        return service.getEventsJsonString();
+    public String getEvents(
+            @AuthenticationPrincipal User user
+    ) {
+        return service.getEventsJsonString(user);
     }
 
     @PostMapping("/selected-day")
-    public String getSelectedDayEvents(@RequestBody Map<String, String> map) {
-        return service.getSelectedDayEvents(map);
+    public String getSelectedDayEvents(
+            @AuthenticationPrincipal User user,
+            @RequestBody Map<String, String> map
+    ) {
+        return service.getSelectedDayEvents(map, user);
     }
 }

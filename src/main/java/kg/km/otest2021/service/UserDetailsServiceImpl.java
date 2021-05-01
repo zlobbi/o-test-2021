@@ -7,6 +7,7 @@
 package kg.km.otest2021.service;
 
 import kg.km.otest2021.entity.user.User;
+import kg.km.otest2021.form.user.ChangePasswordForm;
 import kg.km.otest2021.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -36,5 +37,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         if (user == null)
             throw new UsernameNotFoundException(username);
         return user;
+    }
+
+    public void changePassword(ChangePasswordForm form) {
+        User user = userRepository.findByUsername(form.getUsername());
+        user.setPassword(encoder.encode(form.getNewPassword()));
+        userRepository.save(user);
     }
 }

@@ -66,7 +66,7 @@ public class AuthController {
             return new ModelAndView("change-password")
                     .addObject("form", form);
 
-//        userService.changePassword(form);
+        userService.changePassword(form);
 
         return RedirectUtil.redirect("/login");
     }

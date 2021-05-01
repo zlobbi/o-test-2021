@@ -63,13 +63,12 @@ body, html {
 .show {
     display: block;
 }
-
-.dinner {
-    background-color: #c3e6cb;
+.btn-group .btn:hover {
+   cursor: pointer;
 }
 
-.meeting {
-    background-color: #b8daff;
+.btn-group .btn .active {
+    background-color: #fff; !important;
 }
 
 .footer-bs {

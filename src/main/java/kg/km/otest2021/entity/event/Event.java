@@ -6,11 +6,9 @@
 package kg.km.otest2021.entity.event;
 
 import kg.km.otest2021.entity.base.BaseEntity;
+import kg.km.otest2021.entity.user.User;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
@@ -31,6 +29,10 @@ public class Event extends BaseEntity {
     @OneToOne
     @JoinColumn(name = "event_type")
     private EventType eventType;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
     public String getTitle() {
         return title;
@@ -74,6 +76,15 @@ public class Event extends BaseEntity {
 
     public Event setEventType(EventType eventType) {
         this.eventType = eventType;
+        return this;
+    }
+
+    public User getUser() {
+        return user;
+    }
+
+    public Event setUser(User user) {
+        this.user = user;
         return this;
     }
 }

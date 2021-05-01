@@ -41,6 +41,7 @@ $(document).ready(function () {
         } else {
             taskTypes.forEach(b => b.classList.remove('active'));
             b.classList.add('active');
+            b.style.background = 'red';
         }
     }));
 

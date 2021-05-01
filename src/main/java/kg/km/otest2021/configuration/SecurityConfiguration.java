@@ -46,9 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .invalidateHttpSession(true);
 
         http.authorizeRequests()
-                .antMatchers("/login", "/css/**").permitAll()
-                .antMatchers("/**")
-                .authenticated();
+                .antMatchers( "/**").permitAll();
+
         http
                 .csrf()
                 .disable();

@@ -828,7 +828,6 @@
 
 <#macro radioButtonAsButton path options required=false>
     <@spring.bind path/>
-    <@spring.showErrors "<br>" "text-danger" />
     <div class="form-group">
         <div class="btn-group d-flex flex-wrap mb-2">
             <#list options?keys as value>

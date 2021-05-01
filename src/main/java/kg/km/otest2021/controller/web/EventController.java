@@ -45,7 +45,7 @@ public class EventController {
             return new ModelAndView("index")
                     .addObject("domain", form);
 
-        eventService.create(form);
+        eventService.create(form, user);
         return new ModelAndView("index")
                 .addObject("domain", new EventForm());
     }

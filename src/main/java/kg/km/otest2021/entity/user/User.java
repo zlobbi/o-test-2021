@@ -7,14 +7,13 @@
 package kg.km.otest2021.entity.user;
 
 import kg.km.otest2021.entity.base.BaseEntity;
+import kg.km.otest2021.entity.event.Event;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "\"user\"")
@@ -32,6 +31,9 @@ public class User extends BaseEntity implements UserDetails {
             joinColumns = {@JoinColumn(name = "user_id")},
             inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles = new HashSet<>();
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+    private List<Event> eventList = new ArrayList<>();
 
     @Column
     private boolean expired;
@@ -54,6 +56,15 @@ public class User extends BaseEntity implements UserDetails {
 
     public User setPassword(String password) {
         this.password = password;
+        return this;
+    }
+
+    public List<Event> getEventList() {
+        return eventList;
+    }
+
+    public User setEventList(List<Event> eventList) {
+        this.eventList = eventList;
         return this;
     }
 

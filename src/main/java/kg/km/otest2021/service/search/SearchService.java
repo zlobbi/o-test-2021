@@ -13,8 +13,6 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.UnsupportedEncodingException;
 import java.util.LinkedList;
@@ -22,8 +20,6 @@ import java.util.List;
 
 @Service
 public abstract class SearchService<R> {
-
-    private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("user.agent")
     private String uAgent;

@@ -13,7 +13,7 @@
     Maven
     Spring boot 2.2.4
     PostgresSQL
-    Html\CSS\js (bootstrap, freemarker, библиотеки в частности Fullcalendar)
+    Html\CSS\JS (bootstrap, freemarker, библиотеки в частности Fullcalendar)
 
 Подключенные зависимости:
 

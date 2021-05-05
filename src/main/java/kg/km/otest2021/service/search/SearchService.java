@@ -13,17 +13,13 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
-import org.springframework.web.client.RestTemplate;
-import org.springframework.web.servlet.function.ServerResponse;
 
 import java.io.UnsupportedEncodingException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
 public abstract class SearchService<R> {
-
-    private final RestTemplate restTemplate = new RestTemplate();
 
     @Value("user.agent")
     private String uAgent;
@@ -37,27 +33,29 @@ public abstract class SearchService<R> {
 
     public abstract String getTitleTag();
 
-    public abstract R getResponseInstance();
-
     public List<SearchResponse> sendRequest(String searchParam) {
-        R response = getResponseInstance();
+        List<SearchResponse> responses = new ArrayList<>();
         try {
-
             String requestQuery = getUrl(searchParam);
             Document doc = Jsoup.connect(requestQuery).userAgent(uAgent).get();
             Elements elements = doc.getElementsByTag(getParentTag());
 
-            List<SearchResponse> responses = new LinkedList<>();
-            int counter = 0;
-            for (Element res : elements) {
-                if (res.children().size() > 0) {
-                    String txt = res.getElementsByTag(getTitleTag()).text();
-                    if (!txt.isEmpty()) {
+            SearchResponse response = new SearchResponse();
 
-                        counter++;
-                    }
+            int counter = 0;
+
+            for (Element e : elements) {
+                String href = e.absUrl("href");
+                String txt = e.getElementsByTag(getTitleTag()).text();
+
+                if (!txt.isBlank()) {
+                    response.setHref(href);
+                    response.setTitle(txt);
+                    responses.add(response);
+                    counter++;
                 }
-                if (counter == 6)
+
+                if (counter == 4)
                     break;
             }
 
@@ -66,6 +64,6 @@ public abstract class SearchService<R> {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return null;
+        return responses;
     }
 }

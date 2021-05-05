@@ -35,9 +35,4 @@ public class GoogleSearch extends SearchService<SearchResponse> {
     public String getTitleTag() {
         return titleTag;
     }
-
-    @Override
-    public SearchResponse getResponseInstance() {
-        return new SearchResponse();
-    }
 }

@@ -93,8 +93,24 @@
         </div>
     </nav>
     <#if indev??>
-        <div class="alert alert-warning text-center container" role="alert">
-            <@spring.message "message.indev"/>
+        <div class="container">
+            <div class="alert alert-warning text-center" role="alert">
+                <@spring.message "message.indev"/>
+            </div>
+            <div class="row">
+               <div class="col-md-4">
+                   <div class="panel panel-default">
+                       <div class="panel-header"><h3 class="panel-title">Google</h3></div>
+                       <div class="panel-body">
+                           <#if google?? && google?has_content>
+                               <#list google as res>
+                                   <a href="${res.href}" >${res.title}</a>
+                               </#list>
+                           </#if>
+                       </div>
+                   </div>
+               </div>
+            </div>
         </div>
     </#if>
 </#macro>

@@ -7,6 +7,7 @@ package kg.km.otest2021.controller.web;
 
 import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.form.event.EventForm;
+import kg.km.otest2021.form.search.SearchResponse;
 import kg.km.otest2021.service.event.EventService;
 import kg.km.otest2021.service.search.GoogleSearch;
 import kg.km.otest2021.util.RedirectUtil;
@@ -22,6 +23,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class MainController {
@@ -64,7 +66,7 @@ public class MainController {
             @RequestParam("search") String searchParam,
             RedirectAttributes attributes
     ) {
-        googleSearch.sendRequest(searchParam);
+        List<SearchResponse> responses = googleSearch.sendRequest(searchParam);
         attributes.addFlashAttribute("indev", true);
         return RedirectUtil.redirect("/");
     }

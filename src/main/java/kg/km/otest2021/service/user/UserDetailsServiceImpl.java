@@ -4,7 +4,7 @@
  * 2021.
  */
 
-package kg.km.otest2021.service;
+package kg.km.otest2021.service.user;
 
 import kg.km.otest2021.entity.user.User;
 import kg.km.otest2021.form.user.ChangePasswordForm;

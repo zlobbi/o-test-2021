@@ -7,7 +7,7 @@
 package kg.km.otest2021.configuration;
 
 
-import kg.km.otest2021.service.UserDetailsServiceImpl;
+import kg.km.otest2021.service.user.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

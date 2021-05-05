@@ -3,7 +3,7 @@
  * kadyrbek.mavlyanov@gmail.com
  * 2021.
  */
-package kg.km.otest2021.service;
+package kg.km.otest2021.service.user;
 
 import kg.km.otest2021.repository.RoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -10,7 +10,7 @@ package kg.km.otest2021.advice;
 import kg.km.otest2021.component.navbar.Navbar;
 import kg.km.otest2021.component.navbar.NavbarBuilder;
 import kg.km.otest2021.entity.user.User;
-import kg.km.otest2021.service.EventTypeService;
+import kg.km.otest2021.service.event.EventTypeService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

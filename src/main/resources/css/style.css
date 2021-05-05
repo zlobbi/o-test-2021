@@ -109,3 +109,15 @@ body, html {
     font-size: 67px;
 }
 
+input[type=search] {
+    background: #555  no-repeat 9px center;
+    border: solid 1px #ccc;
+    padding: 9px 10px 9px 32px;
+    width: 55px;
+    color: #fff3cd;
+}
+input[type=search]:focus {
+    width: 500px;
+    background-color: #ccc;
+    border: solid 1px #fff;
+}

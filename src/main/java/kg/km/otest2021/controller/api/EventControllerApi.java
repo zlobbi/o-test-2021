@@ -6,11 +6,9 @@
 package kg.km.otest2021.controller.api;
 
 import kg.km.otest2021.entity.user.User;
-import kg.km.otest2021.service.EventService;
+import kg.km.otest2021.service.event.EventService;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.Map;
 
 @RestController
 @RequestMapping("/api/event")

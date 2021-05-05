@@ -37,7 +37,7 @@ public abstract class BaseEntity {
             return false;
         }
         BaseEntity entity = (BaseEntity) o;
-        return getId().equals(entity.getId());
+        return this.id.equals(entity.getId());
     }
 
     @Override

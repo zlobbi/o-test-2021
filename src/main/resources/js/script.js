@@ -82,11 +82,9 @@ $(document).ready(function () {
     }
 
     async function getSelectedDayEvents(start, end) {
-        const data = {
-            "start": getDateTimeFormat(start),
-            "end": getDateTimeFormat(end)
-        };
-        await postData('api/event/selected-day', JSON.stringify(data))
+        let query = diffBetweenStringDates(start, end) === 1 ? `start=${getDateTimeFormat(start)}&end=${getDateTimeFormat(start)}` :
+            `start=${getDateTimeFormat(start)}&end=${getDateTimeFormat(end)}`;
+        await getData(`api/event/selected-day?${query}`)
             .then(data => {
                 const listBlock = document.querySelector('#tasks-list .list-group');
                 listBlock.innerHTML = '';
@@ -96,14 +94,8 @@ $(document).ready(function () {
             });
     }
 
-    const postData = async (url, data) => {
-        const res = await fetch(url, {
-            method: "POST",
-            headers: {
-                'Content-type': 'application/json'
-            },
-            body: data
-        });
+    const getData = async (url) => {
+        const res = await fetch(url);
         return await res.json();
     };
 

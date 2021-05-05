@@ -49,10 +49,10 @@ public class EventService {
         return getJsonString(eventRepository.findAllByUser(user));
     }
 
-    public String getSelectedDayEvents(Map<String, String> map, User user) {
-        LocalDateTime start = LocalDateTime.parse(map.get("start"), TimeHelper.DATE_TIME_REVERSE_FORMATTER);
-        LocalDateTime end = LocalDateTime.parse(map.get("end"), TimeHelper.DATE_TIME_REVERSE_FORMATTER);
-        return getJsonString(eventRepository.findAllByStartBetweenAndUserOrderByEndDesc(start, end, user));
+    public String getSelectedDayEvents(String start, String end, User user) {
+        LocalDateTime startDate = LocalDateTime.parse(start, TimeHelper.DATE_TIME_REVERSE_FORMATTER);
+        LocalDateTime endDate = LocalDateTime.parse(end, TimeHelper.DATE_TIME_REVERSE_FORMATTER);
+        return getJsonString(eventRepository.findAllByStartBetweenAndUserOrderByEndDesc(startDate, endDate, user));
     }
 
     private String getJsonString(List<Event> events) {

@@ -8,25 +8,16 @@
     <title>O-Tasks</title>
     <link rel="stylesheet" href="../../css/style.css">
     <link rel="stylesheet" href="../../css/bootstrap.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../../css/bootstrap-reboot.min.css">
-    <link rel="stylesheet" href="../../css/icons/icomoon/styles.css">
-    <link rel="stylesheet" href="../../css/icons/fontawesome/styles.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.min.css">
     <link rel="stylesheet" href="../../css/fullcalendar.custom-styles.css">
-    <link rel="stylesheet" href="../../css/anytime.min.css">
-    <link rel="stylesheet" href="../../css/colors.css">
     <#list styles as styleSource>
         <link rel="stylesheet" href="${styleSource}">
     </#list>
     <script src="../../js/jquery.min.js"></script>
     <script src="../../js/script.js"></script>
     <script src="../../js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/bootstrap.bundle.min.js"></script>
-    <script src="../../js/jquery.mask.min.js"></script>
     <script src="../../js/moment.min.js"></script>
     <script src="../../js/fullcalendar.min.js"></script>
-    <script src="../../js/anytime.min.js"></script>
     <#list scripts as scriptSource>
         <script src="${scriptSource}"></script>
     </#list>

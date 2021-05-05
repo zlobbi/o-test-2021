@@ -29,11 +29,12 @@ public class EventControllerApi {
         return service.getEventsJsonString(user);
     }
 
-    @PostMapping("/selected-day")
+    @GetMapping("/selected-day")
     public String getSelectedDayEvents(
             @AuthenticationPrincipal User user,
-            @RequestBody Map<String, String> map
+            @RequestParam("start") String start,
+            @RequestParam("end") String end
     ) {
-        return service.getSelectedDayEvents(map, user);
+        return service.getSelectedDayEvents(start, end, user);
     }
 }

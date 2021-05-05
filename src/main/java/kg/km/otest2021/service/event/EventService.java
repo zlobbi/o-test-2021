@@ -3,7 +3,7 @@
  * kadyrbek.mavlyanov@gmail.com
  * 2021.
  */
-package kg.km.otest2021.service;
+package kg.km.otest2021.service.event;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -19,7 +19,6 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 
 @Service

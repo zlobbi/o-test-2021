@@ -3,7 +3,7 @@
  * kadyrbek.mavlyanov@gmail.com
  * 2021.
  */
-package kg.km.otest2021.service;
+package kg.km.otest2021.service.event;
 
 import kg.km.otest2021.entity.event.EventType;
 import kg.km.otest2021.repository.EventTypeRepository;

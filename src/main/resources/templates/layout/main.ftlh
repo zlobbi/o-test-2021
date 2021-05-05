@@ -51,6 +51,10 @@
                     </#if>
                 </ul>
             </div>
+            <form class="form-inline mx-auto" action="/search" method="post">
+                <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search"
+                       aria-label="Search">
+            </form>
             <ul class="nav navbar-nav navbar-right">
                 <#if user??>
                     <li class="dropdown">
@@ -88,6 +92,11 @@
             </ul>
         </div>
     </nav>
+    <#if indev??>
+        <div class="alert alert-warning text-center container" role="alert">
+            <@spring.message "message.indev"/>
+        </div>
+    </#if>
 </#macro>
 
 <#macro pageHeader>

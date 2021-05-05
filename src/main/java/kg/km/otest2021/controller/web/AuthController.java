@@ -8,7 +8,7 @@ package kg.km.otest2021.controller.web;
 
 
 import kg.km.otest2021.form.user.ChangePasswordForm;
-import kg.km.otest2021.service.UserDetailsServiceImpl;
+import kg.km.otest2021.service.user.UserDetailsServiceImpl;
 import kg.km.otest2021.util.RedirectUtil;
 import kg.km.otest2021.validator.PasswordFormValidator;
 import org.springframework.beans.factory.annotation.Autowired;
